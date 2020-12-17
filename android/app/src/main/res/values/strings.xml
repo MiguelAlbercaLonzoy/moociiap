@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">moociiap</string>
+    <string name="facebook_app_id">400311328080214</string>
+    <string name="fb_login_protocol_scheme">fb400311328080214</string>
+</resources>
