@@ -16,7 +16,7 @@ class Min_Curso extends StatelessWidget{
         },
         child: Container(
           width: 250,
-          height: 150,
+          height: 170,
           decoration: _boxDecoration(context),
           child: Column(
             children: <Widget>[
@@ -26,7 +26,7 @@ class Min_Curso extends StatelessWidget{
                       .push(MaterialPageRoute(builder: (context) => SesionVideo()));
                 },
                 child: Container(
-                  height: 90,
+                  height: 100,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(image: NetworkImage(imagen), fit: BoxFit.cover)),
@@ -38,9 +38,9 @@ class Min_Curso extends StatelessWidget{
                   ),
                 ),),
               Container(
-                height: 25.0,
+                height: 40.0,
                   child:
-                      Center(child: Text(this.curso, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontStyle: FontStyle.italic))),
+                      Center(child: Text(this.curso, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontStyle: FontStyle.italic),textAlign: TextAlign.center,)),
                   ),
               Container(
                 height: 25.0,

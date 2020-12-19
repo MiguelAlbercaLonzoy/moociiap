@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "824710509367",
+    "project_id": "moociiap",
+    "storage_bucket": "moociiap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824710509367:android:e6f7d5ee2a5d37056420b2",
+        "android_client_info": {
+          "package_name": "com.alberca.moociiap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824710509367-4mdgt9khokc1e6b0sb8603350e9tskfi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alberca.moociiap",
+            "certificate_hash": "5eccd057290219196da381037df04ea300f5ef79"
+          }
+        },
+        {
+          "client_id": "824710509367-g9qc3nadblbfsubfb8bbmkv0avdk28d4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVLjdE6XcHSmFIqYB9viOG97x8mGYkkEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824710509367-g9qc3nadblbfsubfb8bbmkv0avdk28d4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

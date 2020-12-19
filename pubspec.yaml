@@ -37,6 +37,9 @@ dependencies:
   json_annotation:
   youtube_player_flutter: ^7.0.0+7
   flutter_search_bar: ^2.1.0
+  google_sign_in: ^4.5.6
+  firebase_core: ^0.5.2
+  firebase_auth: ^0.18.3
 
 dev_dependencies:
   build_runner:
@@ -59,6 +62,9 @@ flutter:
   assets:
     - assets/
     - assets/google.png
+    - assets/images/
+    - assets/logos/
+    - assets/images/camara2.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

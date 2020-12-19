@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentState = 0;
-  List<Widget> widgets = [HomeScreen(), ProfileScreen()];
+  List<Widget> widgets = [MisCursos(), ProfileScreen()];
   List<String> titleString = ["Mi Aprendizaje", "Perfil"];
   final storage = FlutterSecureStorage();
   NetworkHandler networkHandler = NetworkHandler();
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
             ),
             ListTile(
-              title: Text("Settings"),
+              title: Text("Ajustes"),
               trailing: Icon(Icons.settings),
               onTap: () {},
             ),
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: MisCursos(),
+      body: widgets[currentState],
     );
   }
 

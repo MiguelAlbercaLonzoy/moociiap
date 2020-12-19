@@ -18,7 +18,7 @@ class _Resumen extends State<Resumen> {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Padding(padding: const EdgeInsets.all(20.0),
-                  child: Text("Descripcion del curso blah blah blah", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25.0),
+                  child: Text("Breve descripcion del curso", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25.0),
                   )
               ),
             ]

@@ -40,18 +40,14 @@ final List<Entry> data = <Entry>[
       Entry(
         'Introduccion',
         <Entry>[
-          Entry('Item A0.1'),
-          Entry('Item A0.2'),
-          Entry('Item A0.3'),
+          Entry('Bienvenida'),
+          Entry('¿Qué es la Agricultura?'),
         ],
       ),
-      Entry('Section A1'),
-      Entry('Section A2'),
     ],
   ),
   // Second Row
-  Entry('Contenido: Agricultura'),
-  Entry('Chapter C',
+  Entry('Contenido: Agricultura',
     <Entry>[
       Entry('Section C0'),
       Entry('Section C1'),

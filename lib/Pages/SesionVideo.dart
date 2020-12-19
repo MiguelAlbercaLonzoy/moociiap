@@ -7,7 +7,7 @@ class SesionVideo extends StatefulWidget {
   SesionVideo({this.nombrecurso, this.url, this.tituloclase, this.docente});
   final String nombrecurso;
   final url;
-  String url1="https://www.youtube.com/watch?v=QQ9ovlnkxnY";
+  String url1="https://www.youtube.com/watch?v=RPHdeC-QQOM";
   final String docente;
   final String tituloclase;
   @override

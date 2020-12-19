@@ -45,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Sign up with email",
+                "Registrarme con Correo",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   if (_globalkey.currentState.validate() && validate) {
                     // we will send the data to rest server
                     Map<String, String> data = {
-                      "username": _usernameController.text,
+                      "|": _usernameController.text,
                       "email": _emailController.text,
                       "password": _passwordController.text,
                     };
@@ -180,7 +180,7 @@ class _SignUpPageState extends State<SignUpPage> {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text("Username"),
+          Text("Usuario"),
           TextFormField(
             controller: _usernameController,
             decoration: InputDecoration(
@@ -203,7 +203,7 @@ class _SignUpPageState extends State<SignUpPage> {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text("Email"),
+          Text("Correo"),
           TextFormField(
             controller: _emailController,
             validator: (value) {
@@ -230,12 +230,12 @@ class _SignUpPageState extends State<SignUpPage> {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text("Password"),
+          Text("Contraseña"),
           TextFormField(
             controller: _passwordController,
             validator: (value) {
-              if (value.isEmpty) return "Password can't be empty";
-              if (value.length < 8) return "Password lenght must have >=8";
+              if (value.isEmpty) return "Contraseña no puede estar vacia";
+              if (value.length < 8) return "Contraseña no puede tener menos de 8 caracteres";
               return null;
             },
             obscureText: vis,
@@ -248,7 +248,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   });
                 },
               ),
-              helperText: "Password length should have >=8",
+              helperText: "Contraseña no puede tener menos de 8 caracteres",
               helperStyle: TextStyle(
                 fontSize: 14,
               ),

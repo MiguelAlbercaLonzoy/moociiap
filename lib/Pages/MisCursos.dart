@@ -28,9 +28,9 @@ class _MisCursos extends State<MisCursos> {
                     scrollDirection: Axis.vertical,
                     child: Column(
                       children: <Widget>[
-                        Min_Curso("DOTA 2 Introduccion","https://encolombia.com/wp-content/uploads/2020/01/Agricultura.jpg"),
-                        Min_Curso("DOTA 2 Introduccion","https://encolombia.com/wp-content/uploads/2020/01/Agricultura.jpg"),
-                        Min_Curso("DOTA 2 Introduccion","https://www.conservamosica.org/conica/wp-content/uploads/2016/03/20140719-01.jpg"),
+                        Min_Curso("Agricultura","https://encolombia.com/wp-content/uploads/2020/01/Agricultura.jpg"),
+                        Min_Curso("Aprovechamiento Forestal en comunidades Indigenas en Ucayali","https://encolombia.com/wp-content/uploads/2020/01/Agricultura.jpg"),
+                        Min_Curso("Aprovechamiento Forestal en comunidades Indigenas en Ucayali","https://www.conservamosica.org/conica/wp-content/uploads/2016/03/20140719-01.jpg"),
                         Min_Curso("DOTA 2 Introduccion","https://www.conservamosica.org/conica/wp-content/uploads/2016/03/20140719-01.jpg"),
                         Min_Curso("DOTA 2 Introduccion","https://encolombia.com/wp-content/uploads/2020/01/Agricultura.jpg"),
                         Min_Curso("DOTA 2 Introduccion","https://www.conservamosica.org/conica/wp-content/uploads/2016/03/20140719-01.jpg"),

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moociiap/Pages/ForgetPassword.dart';
 import 'package:moociiap/Pages/HomePage.dart';
 import 'package:moociiap/Pages/SignUpPage.dart';
@@ -8,6 +10,9 @@ import "package:flutter/material.dart";
 import '../NetworkHandler.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+
+
+
 class SignInPage extends StatefulWidget {
   SignInPage({Key key}) : super(key: key);
 
@@ -15,7 +20,14 @@ class SignInPage extends StatefulWidget {
   _SignInPageState createState() => _SignInPageState();
 }
 
+
+
+
+
 class _SignInPageState extends State<SignInPage> {
+
+
+
   bool vis = true;
   final _globalkey = GlobalKey<FormState>();
   NetworkHandler networkHandler = NetworkHandler();
@@ -43,16 +55,16 @@ class _SignInPageState extends State<SignInPage> {
         child: Form(
           key: _globalkey,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Sign In with Email",
+                  "Iniciar Sesion con Correo",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
+                    letterSpacing:1,
                   ),
                 ),
                 SizedBox(
@@ -77,7 +89,7 @@ class _SignInPageState extends State<SignInPage> {
                                 builder: (context) => ForgotPasswordPage()));
                       },
                       child: Text(
-                        "Forgot Password ?",
+                        "Olvidaste tu clave?",
                         style: TextStyle(
                           color: Colors.blue,
                           fontSize: 15,
@@ -94,7 +106,7 @@ class _SignInPageState extends State<SignInPage> {
                                 builder: (context) => SignUpPage()));
                       },
                       child: Text(
-                        "New User?",
+                        "Nuevo Usuario?",
                         style: TextStyle(
                           color: Colors.blue[900],
                           fontSize: 15,
@@ -158,7 +170,7 @@ class _SignInPageState extends State<SignInPage> {
                       child: circular
                           ? CircularProgressIndicator()
                           : Text(
-                              "Sign In",
+                              "Iniciar Sesion",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -183,7 +195,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget usernameTextField() {
     return Column(
       children: [
-        Text("Username"),
+        Text("Correo"),
         TextFormField(
           controller: _usernameController,
           decoration: InputDecoration(
@@ -203,7 +215,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget passwordTextField() {
     return Column(
       children: [
-        Text("Password"),
+        Text("Contraseña"),
         TextFormField(
           controller: _passwordController,
           obscureText: vis,
@@ -231,4 +243,5 @@ class _SignInPageState extends State<SignInPage> {
       ],
     );
   }
+
 }
