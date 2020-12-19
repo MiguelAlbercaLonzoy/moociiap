@@ -67,11 +67,11 @@ class _WelcomePageState extends State<WelcomePage>
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.white, Colors.green[200]],
-            begin: const FractionalOffset(0.0, 1.0),
-            end: const FractionalOffset(0.0, 1.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.repeated,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+              Color(0xFF38B000),
+              Color(0xFF134611),]
           ),
         ),
         child: Padding(
@@ -93,18 +93,15 @@ class _WelcomePageState extends State<WelcomePage>
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 15,
+                  height: MediaQuery.of(context).size.height / 45,
                 ),
                 SlideTransition(
                   position: animation1,
-                  child: Text(
-                    "Un bosque de aprendizaje por descubrir",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 38,
-                      letterSpacing: 2,
+                  child: Container(
+                    height: 240,
+                    decoration: BoxDecoration(image: const DecorationImage(image: AssetImage("assets/images/iiap1login.png"),fit: BoxFit.scaleDown),borderRadius: BorderRadius.circular(20.0)
                     ),
+
                   ),
                 ),
                 SizedBox(
@@ -120,7 +117,7 @@ class _WelcomePageState extends State<WelcomePage>
                     child: InkWell(
                       child: Container(
                         height: 60,
-                        width: MediaQuery.of(context).size.width - 120,
+                        width: MediaQuery.of(context).size.width - 100,
                         child: Card(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -147,13 +144,13 @@ class _WelcomePageState extends State<WelcomePage>
                 SizedBox(
                   height: 20,
                 ),
-                _isLogin ? Future.delayed(Duration.zero, () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));}) : boxContainer(
+                _isLogin ? Future.delayed(Duration.zero, () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));}) : boxContainerfb(
                     "assets/facebook1.png", "Registrarme con Facebook", onFBLogin),
 
                 SizedBox(
                   height: 20,
                 ),
-                boxContainer(
+                boxContaineremail(
                   "assets/email2.png",
                   "Registrarme con Correo",
                   onEmailClick,
@@ -235,15 +232,48 @@ class _WelcomePageState extends State<WelcomePage>
       builder: (context) => SignUpPage(),
     ));
   }
-
-  Widget boxContainer(String path, String text, onClick) {
+  Widget boxContaineremail(String path, String text, onClick) {
+    return SlideTransition(
+      position: animation2,
+      child: InkWell(
+        onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => SignUpPage()));
+        },
+        child: Container(
+          height: 60,
+          width: MediaQuery.of(context).size.width - 100,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                children: [
+                  Image.asset(
+                    path,
+                    height: 25,
+                    width: 25,
+                  ),
+                  SizedBox(width: 20),
+                  Text(
+                    text,
+                    style: TextStyle(fontSize: 16, color: Colors.black87),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  Widget boxContainerfb(String path, String text, onClick) {
     return SlideTransition(
       position: animation2,
       child: InkWell(
         onTap: () => onFBLogin(path),
         child: Container(
           height: 60,
-          width: MediaQuery.of(context).size.width - 120,
+          width: MediaQuery.of(context).size.width - 100,
           child: Card(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

@@ -30,15 +30,14 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Container(
         // height: MediaQuery.of(context).size.height,
         // width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: BoxDecoration(image: const DecorationImage(image: AssetImage("assets/images/iiapsanmartin.png"),fit: BoxFit.cover),
           gradient: LinearGradient(
-            colors: [Colors.white, Colors.green[200]],
+            colors: [Color(0xFFE85D04), Color(0xFF6A040F)],
             begin: const FractionalOffset(0.0, 1.0),
             end: const FractionalOffset(0.0, 1.0),
             stops: [0.0, 1.0],
             tileMode: TileMode.repeated,
-          ),
-        ),
+          ),),
         child: Form(
           key: _globalkey,
           child: Column(
@@ -50,6 +49,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
+                  color: Colors.white
                 ),
               ),
               SizedBox(
@@ -180,14 +180,14 @@ class _SignUpPageState extends State<SignUpPage> {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text("Usuario"),
-          TextFormField(
+          Text("Usuario", style: TextStyle(color: Colors.white),),
+          TextFormField(style: TextStyle(color: Colors.white),
             controller: _usernameController,
             decoration: InputDecoration(
               errorText: validate ? null : errorText,
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.black,
+                  color: Colors.white,
                   width: 2,
                 ),
               ),
@@ -203,8 +203,8 @@ class _SignUpPageState extends State<SignUpPage> {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text("Correo"),
-          TextFormField(
+          Text("Correo", style: TextStyle(color: Colors.white),),
+          TextFormField(style: TextStyle(color: Colors.white),
             controller: _emailController,
             validator: (value) {
               if (value.isEmpty) return "Email can't be empty";
@@ -214,7 +214,7 @@ class _SignUpPageState extends State<SignUpPage> {
             decoration: InputDecoration(
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.black,
+                  color: Colors.white,
                   width: 2,
                 ),
               ),
@@ -230,8 +230,8 @@ class _SignUpPageState extends State<SignUpPage> {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10.0),
       child: Column(
         children: [
-          Text("Contraseña"),
-          TextFormField(
+          Text("Contraseña", style: TextStyle(color: Colors.white),),
+          TextFormField(style: TextStyle(color: Colors.white),
             controller: _passwordController,
             validator: (value) {
               if (value.isEmpty) return "Contraseña no puede estar vacia";

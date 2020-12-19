@@ -59,12 +59,21 @@ class _SignInPageState extends State<SignInPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                height: 160,
+                width: 160,
+                decoration: BoxDecoration(image: const DecorationImage(image: AssetImage("assets/images/iiaplogo.png"),fit: BoxFit.scaleDown),borderRadius: BorderRadius.circular(100.0)
+                  ),
+                
+                ),
+
               Text(
                 "Iniciar Sesion con Correo",
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                   letterSpacing:1,
+                  color: Colors.grey
                 ),
               ),
               SizedBox(
@@ -91,7 +100,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Text(
                       "Olvidaste tu clave?",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
@@ -108,7 +117,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Text(
                       "Nuevo Usuario?",
                       style: TextStyle(
-                        color: Colors.blue[900],
+                        color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
@@ -195,14 +204,14 @@ class _SignInPageState extends State<SignInPage> {
   Widget usernameTextField() {
     return Column(
       children: [
-        Text("Correo"),
-        TextFormField(
+        Text("Correo", style: TextStyle(color: Colors.white,),),
+        TextFormField(style: TextStyle(color: Colors.white),
           controller: _usernameController,
           decoration: InputDecoration(
             errorText: validate ? null : errorText,
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.black,
+                color: Colors.white,
                 width: 2,
               ),
             ),
@@ -215,14 +224,14 @@ class _SignInPageState extends State<SignInPage> {
   Widget passwordTextField() {
     return Column(
       children: [
-        Text("Contraseña"),
-        TextFormField(
+        Text("Contraseña", style: TextStyle(color: Colors.white,),),
+        TextFormField(style: TextStyle(color: Colors.white),
           controller: _passwordController,
           obscureText: vis,
           decoration: InputDecoration(
             errorText: validate ? null : errorText,
             suffixIcon: IconButton(
-              icon: Icon(vis ? Icons.visibility_off : Icons.visibility),
+              icon: Icon(vis ? Icons.visibility_off  : Icons.visibility),color: Colors.green,
               onPressed: () {
                 setState(() {
                   vis = !vis;
@@ -231,10 +240,11 @@ class _SignInPageState extends State<SignInPage> {
             ),
             helperStyle: TextStyle(
               fontSize: 14,
+              color: Colors.white,
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.black,
+                color: Colors.white,
                 width: 2,
               ),
             ),
