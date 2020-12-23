@@ -1,52 +1,112 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moociiap/Blog/addBlog.dart';
+import 'package:moociiap/Login/login_google.dart';
+import 'package:moociiap/Model/Token.dart';
+import 'package:moociiap/Model/cursoModel.dart';
 import 'package:moociiap/Pages/WelcomePage.dart';
-import 'package:moociiap/Screen/HomeScreen.dart';
-import 'package:moociiap/Profile/ProfileScreen.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:moociiap/NetworkHandler.dart';
 
+import 'Curso.dart';
 import 'MisCursos.dart';
+import 'PerfilPage.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  final Data data;
+  HomePage({Key key, this.data}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentState = 0;
-  List<Widget> widgets = [MisCursos(), ProfileScreen()];
-  List<String> titleString = ["Mi Aprendizaje", "Perfil"];
   final storage = FlutterSecureStorage();
-  NetworkHandler networkHandler = NetworkHandler();
-  String nombreUsuario = "";
-  Widget profilePhoto = Container(
-    height: 100,
-    width: 100,
-    decoration: BoxDecoration(
-      color: Colors.black,
-      borderRadius: BorderRadius.circular(50),
-    ),
-  );
+  int currentState = 0;
+  List<Curso> _cursos = List<Curso>();
+  String userName;
+  String userImage;
+  String userCorreo;
+  Future<void> _handleInfo() async{
+    try{
+      GoogleSignInAccount data = await googleSignIn.signIn() ?? null;
+      print(data.toString());
+      if(data != null){
+        userName = data.displayName;
+        userImage = data.photoUrl;
+        userCorreo = data.email;
+      }
+    }catch(error){
+      print(error);
+    }
+  }
 
+  NetworkHandler networkHandler = NetworkHandler();
+
+  Future<List<Curso>> fetchCursos() async {
+    String token = widget.data.text;
+    final response = await http.get("http://192.168.0.11:9092/apisis/curso",headers: {'Authorization': 'Bearer $token'});
+
+    var cursos = List<Curso>();
+
+    if(response.statusCode == 200){
+      var cursosJson = json.decode(response.body);
+      for(var cursoJson in cursosJson){
+        cursos.add(Curso.fromJson(cursoJson));
+      }
+    }
+    return cursos;
+  }
+  @override
+  void initState() {
+
+    super.initState();
+    fetchCursos().then((value){
+      setState(() {
+        _cursos.addAll(value);
+      });
+    });
+    _handleInfo().then((value){
+      setState(() {
+
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> widgets = [MisCursos(data: widget.data), ListCursos(data: widget.data)];
+    List<String> titleString = ["Mi Aprendizaje", "Cursos Disponibles"];
     return Scaffold(
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
             DrawerHeader(
-              child: Column(
-                children: <Widget>[
-                  profilePhoto,
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text("@$nombreUsuario"),
-                ],
+              child: GestureDetector(onTap: () {
+                MaterialPageRoute(builder: (context) => PerfilPage());
+              },
+                child: Column(
+                  children: <Widget>[
+                    GestureDetector(onTap: (){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder:(BuildContext context) => PerfilPage()
+                          )
+                      );
+
+                    },
+                        child: Container(height: 100, width: 100, child: Image(image: NetworkImage(userImage,)),)),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text("@$userName"),
+                  ],
+                ),
               ),
             ),
             ListTile(
@@ -55,13 +115,12 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
             ),
             ListTile(
-              title: Text("Cursos de Agronomia"),
-              trailing: Icon(Icons.adb),
+              title: Text("Cursos de Categoria 1"),
+              trailing: Icon(Icons.account_tree_outlined),
               onTap: () {},
             ),
-
             ListTile(
-              title: Text("Cursos de Siembra"),
+              title: Text("Cursos de Categoria 2"),
               trailing: Icon(Icons.account_tree_outlined),
               onTap: () {},
             ),
@@ -121,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                   iconSize: 40,
                 ),
                 IconButton(
-                  icon: Icon(Icons.person),
+                  icon: Icon(Icons.library_books),
                   color: currentState == 1 ? Colors.white : Colors.white54,
                   onPressed: () {
                     setState(() {
@@ -138,6 +197,11 @@ class _HomePageState extends State<HomePage> {
       body: widgets[currentState],
     );
   }
+
+
+
+
+
 
   void logout() async {
     await storage.delete(key: "token");

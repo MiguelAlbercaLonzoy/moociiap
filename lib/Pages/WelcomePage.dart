@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:moociiap/Model/Token.dart';
 import 'HomePage.dart';
 import 'SignUpPage.dart';
 import 'package:http/http.dart' as http;
@@ -19,6 +20,7 @@ GoogleSignIn _googleSignIn = GoogleSignIn(
 );
 
 class WelcomePage extends StatefulWidget {
+
   @override
   _WelcomePageState createState() => _WelcomePageState();
 }
@@ -304,6 +306,7 @@ class _WelcomePageState extends State<WelcomePage>
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
       setState(() {
         _currentUser = account;
+
       });
       if(_currentUser != null){
         Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
